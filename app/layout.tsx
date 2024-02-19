@@ -1,11 +1,12 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import {Poppins} from "next/font/google";
 import "./globals.css";
 import {ThemeProvider} from "@/providers/theme-provider";
 import Bandeau from "@/components/bandeau/bandeau";
+import AuthProvider from "@/providers/auth-provider";
 
 
-const inter = Inter({subsets: ["latin"]});
+const poppins = Poppins({weight: "500", subsets: ["latin"]});
 
 export const metadata: Metadata = {
     title: "SuperFlavio Plomberie",
@@ -20,17 +21,20 @@ export default function RootLayout({
     return (
         <html lang="fr" suppressHydrationWarning>
 
-        <body className={inter.className}>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+        <body className={poppins.className}>
+        <AuthProvider>
 
-        >
-            <Bandeau/>
-            {children}
-        </ThemeProvider>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+
+            >
+                <Bandeau/>
+                {children}
+            </ThemeProvider>
+        </AuthProvider>
         </body>
 
         </html>
