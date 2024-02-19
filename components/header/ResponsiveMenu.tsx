@@ -16,7 +16,7 @@ const ResponsiveMenu = () => {
     return (
         <Sheet>
             <SheetTrigger>
-                <Menu size={30} className={'cursor-pointer text-primary md:hidden'}/>
+                <Menu size={30} className={'cursor-pointer text-white md:hidden'}/>
             </SheetTrigger>
             <SheetContent side={'left'} className={"flex flex-col"}>
                 <HeaderLogo/>

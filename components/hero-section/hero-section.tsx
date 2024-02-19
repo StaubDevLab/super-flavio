@@ -29,7 +29,7 @@ export default function HeroSection  ()  {
                                     nostrum at sapiente
                                     ducimus.
                                 </p>
-                                <a className="inline-block w-full md:w-auto mb-4 md:mr-6 py-5 px-8 text-sm font-bold uppercase border-2 border-transparent bg-primary rounded-lg transition-transform duration-500 ease-in-out hover:scale-110 text-white "
+                                <a className="inline-block w-auto md:w-auto mb-4 md:mr-6 py-3 px-4 text-sm font-bold uppercase border-2 border-transparent bg-primary rounded-lg transition-transform duration-500 ease-in-out hover:scale-110 text-white "
                                    href="#">Me contacter</a>
                             </div>
                         </div>
