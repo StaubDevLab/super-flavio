@@ -29,7 +29,7 @@ export default function HeaderNavigation() {
             <NavigationMenuList className={"flex flex-row justify-between gap-6"}>
                 <NavigationMenuItem>
                     <Link href="/" legacyBehavior passHref>
-                        <NavigationMenuLink className={`text-white font-bold text-xl ${pathname === "/" && "bg-primary px-3 py-2 rounded-xl"} `}>
+                        <NavigationMenuLink className={`text-white font-bold text-xl transition-colors duration-300 ease-in-out  hover:bg-primary ${pathname === "/" && "bg-primary px-3 py-2 rounded-xl"} `}>
                             Accueil
 
                         </NavigationMenuLink>
@@ -39,15 +39,18 @@ export default function HeaderNavigation() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <Link href="/services" legacyBehavior passHref>
-                        <NavigationMenuLink className={`text-white font-bold text-xl hover:bg-primary px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary "} `}>
+                        <NavigationMenuLink className={`text-white font-bold text-xl transition-colors duration-300 ease-in-out  hover:bg-primary px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary "} `}>
                             Services
                         </NavigationMenuLink>
                     </Link>
 
+
+
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <Link href="/about" legacyBehavior passHref>
-                        <NavigationMenuLink className={`text-white font-bold text-xl  hover:bg-primary px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary"} `}>
+                        <NavigationMenuLink
+                            className={`text-white font-bold text-xl  transition-colors duration-300 ease-in-out  hover:bg-primary px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary"} `}>
                             À propos
                         </NavigationMenuLink>
                     </Link>

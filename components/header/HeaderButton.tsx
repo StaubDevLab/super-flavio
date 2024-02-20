@@ -7,7 +7,7 @@ export default function HeaderButton({content}: { content :string }) {
     const router = useRouter()
     return (
         <>
-            <Button className={"text-lg flex-wrap"} onClick={() => router.push("/contact")}>{content}</Button>
+            <Button className={"text-lg "} onClick={() => router.push("/contact")}>{content}</Button>
         </>
     );
 }
