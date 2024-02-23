@@ -1,20 +1,44 @@
-import React from 'react';
-import Image from "next/image"
+'use client'
+import React, {useEffect, useState} from 'react';
 
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-
-import PropTypes from 'prop-types';
 import Header from "@/components/header/Header";
+
 
 type Props = {
     params:{
     }
 }
 export default function HeroSection  ()  {
+    const [scrollY, setScrollY] = useState(0);
+
+    const handleScroll = () => {
+        setScrollY(window.scrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+    const calculateBackgroundStyles = () => {
+        // Adjust the factor for the desired zoom effect
+        const backgroundSize = 100 + scrollY * 0.1;
+        const backgroundPosition = `50% ${scrollY * 0.1}px`;
+        return {
+            backgroundImage: 'url(/assets/hero-image.jpg)',
+            backgroundSize: `${backgroundSize}% auto`,
+            backgroundPosition: backgroundPosition,
+            backgroundRepeat: 'no-repeat',
+        };
+    };
     return (
         <header className="w-full">
-            <div className="w-full bg-center bg-cover"
-                 style={{backgroundImage: 'url(/assets/hero-image.jpg)'}}>
+
+            <div className="w-full bg-center bg-cover "
+                 style={{backgroundImage: 'url(/assets/hero-image.jpg)'}}
+                 >
+
 
                 <div className="flex flex-col items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 pb-12">
                     <Header/>
