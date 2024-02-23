@@ -1,9 +1,9 @@
 import type {Metadata} from "next";
 import {Poppins} from "next/font/google";
 import "./globals.css";
-import {ThemeProvider} from "@/providers/theme-provider";
 import Bandeau from "@/components/bandeau/bandeau";
 import AuthProvider from "@/providers/auth-provider";
+import QueryProvider from "@/providers/query-provider";
 
 
 const poppins = Poppins({weight: "500", subsets: ["latin"]});
@@ -22,19 +22,12 @@ export default function RootLayout({
         <html lang="fr" suppressHydrationWarning>
 
         <body className={poppins.className}>
-        <AuthProvider>
-
-            <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-
-            >
+        <QueryProvider>
+            <AuthProvider>
                 <Bandeau/>
                 {children}
-            </ThemeProvider>
-        </AuthProvider>
+            </AuthProvider>
+        </QueryProvider>
         </body>
 
         </html>
