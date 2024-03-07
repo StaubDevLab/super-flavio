@@ -11,7 +11,8 @@ type Props = {
 export default function ServicesGroup  ({params} : Props)  {
     const {data:services} = useServices();
     return (
-        <section className={'py-10'}>
+        <section className={'py-7 flex flex-col gap-5 items-center'}>
+            <h2 className={"text-3xl text-primary"}>Mes services</h2>
             {services && services.map((service : Service) => <ServiceSingle key={service.id} service={service}/>) }
         </section>
     );
