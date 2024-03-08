@@ -7,7 +7,7 @@ export default function ServicesPage() {
     return (
         <PageContainer>
             <Header/>
-            <Separator className={"border-primary border w-3/4 mx-auto"}/>
+            {/*<Separator className={"border-primary border w-3/4 mx-auto"}/>*/}
             <ServicesGroup params={""}/>
         </PageContainer>
     )

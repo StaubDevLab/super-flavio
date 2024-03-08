@@ -29,7 +29,7 @@ export default function HeaderNavigation() {
             <NavigationMenuList className={"flex flex-row justify-between gap-6"}>
                 <NavigationMenuItem>
                     <Link href="/" legacyBehavior passHref>
-                        <NavigationMenuLink className={`text-white font-bold text-xl transition-colors duration-300 ease-in-out  hover:bg-primary ${pathname === "/" && "bg-primary px-3 py-2 rounded-xl"} `}>
+                        <NavigationMenuLink className={` font-bold text-xl transition-colors duration-300 ease-in-out  hover:bg-primary hover:text-white  px-3 py-2 rounded-xl ${pathname === "/" && "bg-primary text-white"} `}>
                             Accueil
 
                         </NavigationMenuLink>
@@ -39,7 +39,7 @@ export default function HeaderNavigation() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <Link href="/services" legacyBehavior passHref>
-                        <NavigationMenuLink className={`text-white font-bold text-xl transition-colors duration-300 ease-in-out  hover:bg-primary px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary "} `}>
+                        <NavigationMenuLink className={` font-bold text-xl transition-colors duration-300 ease-in-out  hover:bg-primary hover:text-white px-3 py-2 rounded-xl ${pathname === "/services" && "bg-primary text-white"} `}>
                             Services
                         </NavigationMenuLink>
                     </Link>
@@ -50,7 +50,7 @@ export default function HeaderNavigation() {
                 <NavigationMenuItem>
                     <Link href="/about" legacyBehavior passHref>
                         <NavigationMenuLink
-                            className={`text-white font-bold text-xl  transition-colors duration-300 ease-in-out  hover:bg-primary px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary"} `}>
+                            className={` font-bold text-xl  transition-colors duration-300 ease-in-out  hover:bg-primary  hover:text-white  px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary text-white"} `}>
                             À propos
                         </NavigationMenuLink>
                     </Link>
