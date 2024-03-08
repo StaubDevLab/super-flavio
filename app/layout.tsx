@@ -4,6 +4,7 @@ import "./globals.css";
 import Bandeau from "@/components/bandeau/bandeau";
 import AuthProvider from "@/providers/auth-provider";
 import QueryProvider from "@/providers/query-provider";
+import Footer from "@/components/footer/footer";
 
 
 const poppins = Poppins({weight: "500", subsets: ["latin"]});
@@ -26,6 +27,7 @@ export default function RootLayout({
             <AuthProvider>
                 <Bandeau/>
                 {children}
+                <Footer/>
             </AuthProvider>
         </QueryProvider>
         </body>
