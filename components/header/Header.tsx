@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import PageContainer from "@/components/ui/page-container";
+
 import HeaderNavigation from "@/components/header/HeaderNavigation";
 import HeaderLogo from "@/components/header/HeaderLogo";
 import ResponsiveMenu from "@/components/header/ResponsiveMenu";
@@ -18,10 +18,9 @@ const Header = () => {
                     <HeaderLogo/>
 
                     <HeaderNavigation/>
-                    <div className="flex items-center">
-                        <HeaderButton content={"Prendre rdv"}/>
-                    </div>
+
                     <div className={"flex gap-4 "}>
+                        <HeaderButton content={"Prendre rdv"}/>
                         <ResponsiveMenu/>
                         <HeaderAvatar/>
                     </div>
