@@ -21,7 +21,7 @@ const Header = () => {
                     <div className="flex items-center">
                         <HeaderButton content={"Prendre rdv"}/>
                     </div>
-                    <div className={"flex gap-4 md:hidden"}>
+                    <div className={"flex gap-4 "}>
                         <ResponsiveMenu/>
                         <HeaderAvatar/>
                     </div>

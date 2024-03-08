@@ -41,15 +41,15 @@ const ResponsiveMenu = () => {
                         <div
                             className="h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-in-out"></div>
                     </div>
-                    <div className="group cursor-pointer">
-                        <Link href={"/about"}>
-                            À propos
-                        </Link>
-                        <div
-                            className="h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-in-out">
+                    {/*<div className="group cursor-pointer">*/}
+                    {/*    <Link href={"/about"}>*/}
+                    {/*        À propos*/}
+                    {/*    </Link>*/}
+                    {/*    <div*/}
+                    {/*        className="h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-in-out">*/}
 
-                        </div>
-                    </div>
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     {session && status === "authenticated" && (
                         <div className="group cursor-pointer">
                             <Link href={"/admin"}>
