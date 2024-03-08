@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
 
     return (
-        <footer className="flex flex-col p-10 bg-primary text-white justify-center items-center gap-3">
+        <footer className="flex flex-col p-10 bg-primary text-white justify-center items-center mt-auto gap-3">
             <nav className="flex flex-col md:flex-row gap-4 text-center">
                 <Link href={"/"} className="link link-hover">Accueil</Link>
                 <Link href={"/services"} className="link link-hover">Services</Link>

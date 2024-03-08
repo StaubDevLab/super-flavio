@@ -21,17 +21,17 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="fr" suppressHydrationWarning>
-
-        <body className={poppins.className}>
         <QueryProvider>
             <AuthProvider>
+                <body className={`flex flex-col  min-h-screen ${poppins.className}`}>
+
                 <Bandeau/>
                 {children}
                 <Footer/>
+
+                </body>
             </AuthProvider>
         </QueryProvider>
-        </body>
-
         </html>
     );
 }

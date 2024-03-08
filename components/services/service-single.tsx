@@ -3,6 +3,7 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} 
 import {Service} from "@prisma/client";
 import {motion} from 'framer-motion';
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
     service: Service
@@ -11,10 +12,11 @@ export default function ServiceSingle({service}: Props) {
     return (
         <motion.div whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.9}} className={"cursor-pointer"}>
+            <Link href={"/services/" + service.slug} >
             <Card className={"w-[350px] shadow-lg p-0"}>
                 <CardHeader className={"p-0"}>
 
-                    <Image src={"/services/service-plomberie.jpeg"}
+                    <Image src={service?.image || ""}
                            alt={"Test"}
                            width={350}
                            height={200}
@@ -28,12 +30,13 @@ export default function ServiceSingle({service}: Props) {
                 </CardContent>
                 <CardFooter
                     className="flex justify-between">
-                    <Button>En
-                        savoir
+                    <Button >
+                        En savoir
                         plus </Button>
 
                 </CardFooter>
             </Card>
+            </Link>
         </motion.div>
     )
 };
