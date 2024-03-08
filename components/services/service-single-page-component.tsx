@@ -6,6 +6,7 @@ import Image from "next/image";
 import PageContainer from '../ui/page-container';
 import {useServiceBySlug} from "@/utils/queries/useServiceBySlug";
 import {notFound} from "next/navigation";
+import ServiceSkeleton from "@/components/services/ServiceSkeleton";
 type Props = {
     slug: string
 }
@@ -19,7 +20,7 @@ export default function ServiceSinglePageComponent  ({slug} : Props)  {
         return (
             <PageContainer>
                 <div className={"flex flex-col items-center gap-4"}>
-                    {/*<ServiceSkeleton/>*/}
+                    <ServiceSkeleton/>
                 </div>
             </PageContainer>
         )

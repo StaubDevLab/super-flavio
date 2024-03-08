@@ -47,15 +47,15 @@ export default function HeaderNavigation() {
 
 
                 </NavigationMenuItem>
-                {/*<NavigationMenuItem>*/}
-                {/*    <Link href="/about" legacyBehavior passHref>*/}
-                {/*        <NavigationMenuLink*/}
-                {/*            className={` font-bold text-xl  transition-colors duration-300 ease-in-out  hover:bg-primary  hover:text-white  px-3 py-2 rounded-xl ${pathname === "/about" && "bg-primary text-white"} `}>*/}
-                {/*            À propos*/}
-                {/*        </NavigationMenuLink>*/}
-                {/*    </Link>*/}
+                <NavigationMenuItem>
+                    <Link href="/contact" legacyBehavior passHref>
+                        <NavigationMenuLink
+                            className={` font-bold text-xl  transition-colors duration-300 ease-in-out  hover:bg-primary  hover:text-white  px-3 py-2 rounded-xl ${pathname === "/contact" && "bg-primary text-white"} `}>
+                            Contact
+                        </NavigationMenuLink>
+                    </Link>
 
-                {/*</NavigationMenuItem>*/}
+                </NavigationMenuItem>
 
 
             </NavigationMenuList>

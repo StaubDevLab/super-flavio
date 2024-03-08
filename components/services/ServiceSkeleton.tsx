@@ -1,7 +1,6 @@
-import {Badge} from "@/app/_components/ui/badge";
-import {BadgeEuro, Timer, Users} from "lucide-react";
-import {Skeleton} from "@/app/_components/ui/skeleton";
-import PageContainer from "@/app/_components/ui/page-container";
+
+import {Skeleton} from "@/components/ui/skeleton";
+import PageContainer from "@/components/ui/page-container";
 import * as React from "react";
 
 export default function ServiceSkeleton() {
