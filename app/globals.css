@@ -73,4 +73,30 @@
   body {
     @apply bg-background text-foreground;
   }
+  .quill-content {
+    h1{
+      @apply text-3xl;
+    }
+    h2{
+      @apply text-2xl;
+    }
+    h3{
+      @apply text-xl;
+    }
+    h4{
+      @apply text-lg;
+    }
+    ol{
+      @apply list-decimal;
+    }
+    ul{
+      @apply list-disc;
+    }
+    a{
+      @apply text-primary underline;
+
+    }
+
+  }
+
 }

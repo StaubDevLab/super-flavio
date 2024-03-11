@@ -25,7 +25,7 @@ export default function ServiceSingle({service}: Props) {
                 <CardContent
                     className={"mt-3 flex flex-col gap-4"}>
                     <CardTitle>{service.title} </CardTitle>
-                    < CardDescription> {service.description} </CardDescription>
+                    < CardDescription> <p className="quill-content" dangerouslySetInnerHTML={{__html: service.shortDescription || ""}}></p></CardDescription>
 
                 </CardContent>
                 <CardFooter
