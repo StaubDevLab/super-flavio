@@ -1,5 +1,5 @@
 import React from 'react';
-import {AtSign, MapPin, Phone} from "lucide-react";
+import {AtSign, MapPin, Phone, Siren, Wrench} from "lucide-react";
 type Props = {
     params:{
     }
@@ -12,12 +12,23 @@ export default function ContactInfos  ({params} : Props)  {
             <div className={"flex flex-col gap-4 "}>
                 <div className={'flex items-center gap-3'}>
                     <div className={"bg-primary p-3 rounded-lg"}>
-                        <MapPin size={30} className={"text-white"}/>
+                        <Siren size={30} className={"text-white"}/>
                     </div>
 
                     <div>
-                        <p className={'font-bold underline'}>Zone d&apos;intervention :</p>
-                        <p className={"text-muted-foreground"}>Sur tout le département de la Corrèze (19)</p>
+                        <p className={'font-bold underline'}>Zone d&apos;intervention dépannage :</p>
+                        <p className={"text-muted-foreground"}>Agglomérations Tulle et Brive-La-Gaillarde</p>
+
+                    </div>
+                </div>
+                <div className={'flex items-center gap-3'}>
+                    <div className={"bg-primary p-3 rounded-lg"}>
+                        <Wrench  size={30} className={"text-white"}/>
+                    </div>
+
+                    <div>
+                        <p className={'font-bold underline'}>Zone d&apos;intervention chantiers :</p>
+                        <p className={"text-muted-foreground"}>Corrèze (19) et départements limitrophes</p>
 
                     </div>
                 </div>
@@ -37,7 +48,8 @@ export default function ContactInfos  ({params} : Props)  {
                     </div>
                     <div>
                         <p className={'font-bold underline'}>Email :</p>
-                        <a href={"mailto: contact@superflavio.com"} className={" underline text-muted-foreground"}>contact@superflavio.com</a>
+                        <a href={"mailto: contact@superflavio.com"}
+                           className={" underline text-muted-foreground"}>contact@superflavio.com</a>
 
                     </div>
                 </div>
