@@ -1,11 +1,10 @@
-import {EmailClientTemplate} from '@/components/email/email-client-template';
 import { Resend } from 'resend';
 import {EmailInfoTemplate} from "@/components/email/email-info-template";
 import EmailToClientTemplate from "@/components/email/email-client-template-custom";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req:Request, res:Request) {
+export async function POST(req:Request) {
     const body = req ? await req.json() : null
    const { name, email, tel,subject,message } = body
     try {
