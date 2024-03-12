@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {Separator} from "@/components/ui/separator";
 import {AtSign, MapPin, Phone} from "lucide-react";
 type Props = {
     params:{
@@ -29,7 +27,7 @@ export default function ContactInfos  ({params} : Props)  {
                     </div>
                     <div>
                         <p className={'font-bold underline'}>Téléphone :</p>
-                        <p className={"text-muted-foreground"}>06.00.00.00.00</p>
+                        <p className={"text-muted-foreground"}>{process.env.NEXT_PUBLIC_PHONE}</p>
 
                     </div>
                 </div>

@@ -10,8 +10,8 @@ type Props = {
 }
 export default function ServiceSingle({service}: Props) {
     return (
-        <motion.div whileHover={{scale: 1.1}}
-                    whileTap={{scale: 0.9}} className={"cursor-pointer"}>
+        <motion.div whileHover={{scale: 1.05}}
+                    whileTap={{scale: 0.95}} className={"cursor-pointer"}>
             <Link href={"/services/" + service.slug} >
             <Card className={"w-[350px] shadow-lg p-0"}>
                 <CardHeader className={"p-0"}>
