@@ -7,7 +7,7 @@ interface EmailToClientTemplateProps {
 }
 
 const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
+    ? `https://${process.env.NEXT_PUBLIC_URL_DOMAIN}`
     : "";
 
 
