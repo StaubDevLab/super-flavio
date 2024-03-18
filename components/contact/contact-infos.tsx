@@ -49,7 +49,7 @@ export default function ContactInfos  ({params} : Props)  {
                     <div>
                         <p className={'font-bold underline'}>Email :</p>
                         <a href={"mailto: contact@superflavio.com"}
-                           className={" underline text-muted-foreground"}>contact@superflavio.com</a>
+                           className={" underline text-muted-foreground"}>{process.env.NEXT_PUBLIC_EMAIL}</a>
 
                     </div>
                 </div>

@@ -8,7 +8,7 @@ export default function Footer() {
             <nav className="flex flex-col md:flex-row gap-4 text-center">
                 <Link href={"/"} className="link link-hover">Accueil</Link>
                 <Link href={"/services"} className="link link-hover">Services</Link>
-                <Link href={"/about"} className="link link-hover">À propos</Link>
+                <Link href={"/contact"} className="link link-hover">Contact</Link>
 
             </nav>
             <nav>

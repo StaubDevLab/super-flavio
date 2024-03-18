@@ -10,33 +10,39 @@ type Props = {
 }
 export default function ServiceSingle({service}: Props) {
     return (
-        <motion.div whileHover={{scale: 1.05}}
-                    whileTap={{scale: 0.95}} className={"cursor-pointer"}>
-            <Link href={"/services/" + service.slug} >
-            <Card className={"w-[350px] shadow-lg p-0"}>
-                <CardHeader className={"p-0"}>
 
-                    <Image src={service?.image || ""}
-                           alt={"Test"}
-                           width={350}
-                           height={200}
-                    />
-                </CardHeader>
-                <CardContent
-                    className={"mt-3 flex flex-col gap-4"}>
-                    <CardTitle>{service.title} </CardTitle>
-                    < CardDescription> <p className="quill-content" dangerouslySetInnerHTML={{__html: service.shortDescription || ""}}></p></CardDescription>
+        <Card className={"w-[350px] shadow-lg p-0 flex flex-col justify-start hover:shadow-md transition duration-300 "}>
+            {/*<motion.div whileHover={{scale: 1.05}}*/}
+            {/*            whileTap={{scale: 0.95}} className={"cursor-pointer"}>*/}
+            {/*    <Link href={"/services/" + service.slug}>*/}
+                    <CardHeader className={"p-0"}>
 
-                </CardContent>
-                <CardFooter
-                    className="flex justify-between">
-                    <Button >
-                        En savoir
-                        plus </Button>
+                        <Image src={service?.image || ""}
+                               alt={"Test"}
+                               width={350}
+                               height={200}
+                        />
+                    </CardHeader>
+            <div className={"flex flex-col justify-between flex-1"}>
+                    <CardContent
+                        className={"mt-3 flex flex-col gap-4"}>
+                        <CardTitle>{service.title} </CardTitle>
+                        < CardDescription><p className="quill-content"
+                                             dangerouslySetInnerHTML={{__html: service.shortDescription || ""}}></p>
+                        </CardDescription>
 
-                </CardFooter>
-            </Card>
-            </Link>
-        </motion.div>
-    )
+                    </CardContent>
+                    <CardFooter
+                        className="flex justify-between">
+                        <Button> <Link href={"/services/" + service.slug} >
+                            En savoir
+                            plus</Link> </Button>
+
+                    </CardFooter>
+            </div>
+            {/*    </Link>*/}
+            {/*</motion.div>*/}
+        </Card>
+
+)
 };
