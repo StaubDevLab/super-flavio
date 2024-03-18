@@ -49,9 +49,7 @@ export default function HeroSection  ()  {
 
                                 <h2 className="mt-8 mb-6 text-4xl lg:text-5xl font-bold text-gray-100">Votre expert plombier sur la <span className={"text-primary"}>Corrèze <span className={"text-3xl animate-pulse"}>|</span></span> <span >🪠👨🏼‍🔧</span></h2>
                                 <p className="max-w-3xl mx-auto mb-10 text-lg text-gray-300">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum sit cum iure qui,
-                                    nostrum at sapiente
-                                    ducimus.
+                                    Solution tout-en-un pour tous vos projets de plomberie et vos travaux de rénovation.
                                 </p>
                                 <a className="inline-block w-auto md:w-auto mb-4 md:mr-6 py-3 px-4 text-sm font-bold uppercase border-2 border-transparent bg-primary rounded-lg transition-transform duration-500 ease-in-out hover:scale-110 text-white "
                                    href="/contact">Me contacter</a>
