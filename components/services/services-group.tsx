@@ -29,7 +29,7 @@ export default function ServicesGroup({params}: Props) {
         <section className={'py-7 flex flex-col gap-5 items-center'}>
             <h2 className={"text-3xl text-primary"}>Mes services</h2>
             <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto"}>
-                {services && services.map((service: Service) => <ServiceSingle key={service.id} service={service}/>)}
+                {services && services.map((service: Service) => service.active && <ServiceSingle key={service.id} service={service}/>)}
             </div>
         </section>
     );

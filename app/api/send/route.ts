@@ -1,29 +1,32 @@
-import { Resend } from 'resend';
 import {EmailInfoTemplate} from "@/components/email/email-info-template";
-import EmailToClientTemplate from "@/components/email/email-client-template-custom";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function POST(req:Request) {
+import {EmailToClientTemplateCustom} from "@/components/email/email-client-template-custom";
+import { render } from '@react-email/render';
+import sendgrid from '@sendgrid/mail';
+sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY ||"");
+export async function POST(req:Request, res:Request) {
     const body = req ? await req.json() : null
-   const { name, email, tel,subject,message } = body
+    const { name, email, tel,subject,message } = body
+    // @ts-ignore
+    const emailHtml = render(EmailToClientTemplateCustom({name}));
+    const optionsToClient = {
+        from: "contact@superflavioplomberie.fr",
+        to: email,
+        subject: 'Flavien STAUB Plombier - Prise en compte de votre demande',
+        html: emailHtml,
+    };
+    const emailHtmlToInfos = render(EmailInfoTemplate({ name, email, tel, subject, message }));
+    const optionsToInfos = {
+        from:  "contact@superflavioplomberie.fr",
+        to:  process.env.NEXT_PUBLIC_EMAIL || "flavien.staub@gmail.com",
+        subject: 'SuperFlavio - Nouvelle demande',
+        html: emailHtmlToInfos,
+    };
     try {
-        const dataClient = await resend.emails.send({
-            from: 'Flavien STAUB - Plombier en Corrèze <onboarding@resend.dev>',
-            to: [email],
-            subject: 'Flavien STAUB - Prise en compte de votre demande',
-            react: EmailToClientTemplate({ name: name }),
-            text: 'Hello world',
-        });
-        const dataInfo = await resend.emails.send({
-            from: 'Flavien STAUB - Plombier en Corrèze<onboarding@resend.dev>',
-            to: [process.env.NEXT_PUBLIC_EMAIL || "flavien.staub@gmail.com"],
-            subject: `Nouvelle demande depuis le site de ${name}`,
-            react: EmailInfoTemplate({ name: name, email: email, tel: tel, subject: subject, message: message }),
-            text: 'Hello world',
-        })
+        await sendgrid.send(optionsToInfos).then(res => console.log(res)).catch(err => console.log(err));
 
-        return Response.json({ dataClient, dataInfo}, { status: 200 });
+        await sendgrid.send(optionsToClient).then(res => console.log(res)).catch(err => console.log(err));
+
+        return Response.json({ }, { status: 200 });
     } catch (error) {
         return Response.json({ error });
     }

@@ -9,10 +9,9 @@ interface EmailTemplateProps {
 
 }
 
-export const EmailInfoTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
-                                                                                name,
-                                                                                ...props
-                                                                            }) => (
+export const EmailInfoTemplate = ({
+                                      name, email, tel, subject, message
+                                  }: EmailTemplateProps) => (
     <div>
         <h1>Bonjour, Flavien!</h1>
         <p>
@@ -21,10 +20,10 @@ export const EmailInfoTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         </p>
         <ul>
             <li>Nom : {name}</li>
-            <li>Email : {props.email}</li>
-            <li>Téléphone : {props.tel}</li>
-            <li>Sujet : {props.subject}</li>
-            <li>Message : {props.message}</li>
+            <li>Email : {email}</li>
+            <li>Téléphone : {tel}</li>
+            <li>Sujet : {subject}</li>
+            <li>Message : {message}</li>
         </ul>
     </div>
 );

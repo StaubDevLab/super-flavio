@@ -9,7 +9,7 @@ type Props = {
 export default function Pin  ({children, zoomText, descriptionText} : Props)  {
     return (
         <motion.div whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }} className=" cursor-pointer flex p-4 space-x-4 rounded-lg md:space-x-6 border border-2 shadow-xl ">
+                    whileTap={{ scale: 0.9 }} className=" cursor-pointer  flex p-4 space-x-4 rounded-lg md:space-x-6  border-2 shadow-xl ">
             <div className="flex justify-center items-center p-2 align-middle rounded-lg sm:p-4 bg-primary">
                 {children}
             </div>

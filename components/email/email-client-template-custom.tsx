@@ -6,12 +6,12 @@ interface EmailToClientTemplateProps {
     name: string
 }
 
-const baseUrl = process.env.VERCEL_URL
+const baseUrl = process.env.NEXT_PUBLIC_URL_DOMAIN
     ? `https://${process.env.NEXT_PUBLIC_URL_DOMAIN}`
     : "";
 
 
-export const EmailToClientTemplate = ({
+export const EmailToClientTemplateCustom = ({
                                         name
                                     }: EmailToClientTemplateProps) => {
     return (
@@ -87,4 +87,3 @@ export const EmailToClientTemplate = ({
     );
 };
 
-export default EmailToClientTemplate;
