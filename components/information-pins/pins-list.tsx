@@ -32,8 +32,8 @@ export default function PinsList  ({params} : Props)  {
                         <Bitcoin size={40} className="text-white" />
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leadi">Paiements</p>
-                        <p className="capitalize">Cryptos & Bitcoin</p>
+                        <p className="text-3xl font-semibold leadi">Cryptos & Bitcoin</p>
+                        <p className="capitalize">Acceptés</p>
                     </div>
                 </div>
             </div>

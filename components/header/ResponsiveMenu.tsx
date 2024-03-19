@@ -22,7 +22,7 @@ const ResponsiveMenu = () => {
                 <HeaderLogo/>
                 <nav className={'flex flex-col gap-4 text-lg items-start'}>
                     <HeaderAvatar/>
-                    <Link href={'/write'}>
+                    <Link href={'/contact'}>
                         <HeaderButton content={"Prendre rdv"}/>
                     </Link>
                     <div className="group cursor-pointer">
