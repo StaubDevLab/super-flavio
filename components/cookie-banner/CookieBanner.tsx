@@ -35,7 +35,7 @@ export default function CookieBanner() {
         <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50 bg-white border border-gray-200 shadow-lg rounded-lg p-6 max-w-md w-11/12 transition-opacity duration-300">
             <div className="flex flex-col items-center text-center">
                 <p className="text-sm text-gray-700 mb-4">
-                    Nous utilisons des cookies pour améliorer votre expérience. En cliquant sur "Accepter", vous consentez à l'utilisation de cookies et nous permet de mesurer l'audience de notre site.
+                    Nous utilisons des cookies pour améliorer votre expérience. En cliquant sur &quot;Accepter&quot;, vous consentez à l'utilisation de cookies et nous permet de mesurer l'audience de notre site.
                 </p>
                 <div className="flex space-x-4">
                     <button
