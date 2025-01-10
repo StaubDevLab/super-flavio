@@ -1,4 +1,7 @@
 import type {Metadata} from "next";
+import React, { Suspense } from 'react';
+import GoogleAnalytics from '@/components/google-analytics/GoogleAnalytics';
+import CookieBanner from '@/components/cookie-banner/CookieBanner';
 import {Poppins} from "next/font/google";
 import "./globals.css";
 import Bandeau from "@/components/bandeau/bandeau";
@@ -22,6 +25,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="fr" suppressHydrationWarning>
+        <Suspense fallback={null}>
+            <GoogleAnalytics GA_MEASUREMENT_ID='G-QJRM2V7YMT' />
+        </Suspense>
 
         <body className={`flex flex-col  min-h-screen ${poppins.className}`}>
         <QueryProvider>
@@ -30,9 +36,11 @@ export default function RootLayout({
                     <Bandeau/>
                     {children}
                     <Footer/>
+                    <CookieBanner />
                 </ReduxProvider>
             </AuthProvider>
         </QueryProvider>
+
         </body>
 
         </html>
