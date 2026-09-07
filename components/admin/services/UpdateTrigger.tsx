@@ -2,7 +2,7 @@
 import {useDispatch} from "react-redux";
 import {Button} from "@/components/ui/button";
 import {open } from "@/stores/dialog-slice";
-import {Service} from ".prisma/client";
+import type {Service} from "@prisma/client";
 
 export function UpdateTrigger({service} : {service: Service|undefined}) {
     const dispatch = useDispatch();

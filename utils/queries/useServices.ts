@@ -1,6 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {Service} from ".prisma/client";
+import type {Service} from "@prisma/client";
 
 const getServices = async () => {
     const {data} = await axios.get(`/api/services`, {

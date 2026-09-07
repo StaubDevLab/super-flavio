@@ -1,6 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {Service} from ".prisma/client";
+import type {Service} from "@prisma/client";
 import {notFound} from "next/navigation";
 
 const getServiceBySlug = async (slug: string) => {

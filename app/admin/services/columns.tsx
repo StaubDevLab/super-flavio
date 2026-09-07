@@ -1,6 +1,6 @@
 "use client"
 import {ColumnDef} from "@tanstack/table-core";
-import {Service} from ".prisma/client";
+import type {Service} from "@prisma/client";
 import {ArrowUpDown, MoreVertical} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
