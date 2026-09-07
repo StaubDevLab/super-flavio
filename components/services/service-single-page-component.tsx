@@ -28,7 +28,7 @@ export default function ServiceSinglePageComponent({slug}: Props) {
             <PageContainer>
                 <div className={"flex flex-col items-center gap-4 text-center py-10"}>
                     <h1 className={"text-xl font-bold text-destructive"}>Service non trouvé</h1>
-                    <p className={"text-muted-foreground"}>Le service demandé n'existe pas ou n'est pas disponible.</p>
+                    <p className={"text-muted-foreground"}>{"Le service demandé n'existe pas ou n'est pas disponible."}</p>
                 </div>
             </PageContainer>
         )
