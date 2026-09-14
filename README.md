@@ -24,6 +24,14 @@ Accès : `/admin/services`, après connexion avec une adresse autorisée.
 
 L’accueil présente jusqu’à six services publiés, avec les services mis en avant en premier, puis l’ordre d’affichage. La page des services présente tout le catalogue publié. Les URL des services existants restent inchangées après modification du titre.
 
+## Réalisations
+
+La section de l’accueil présente jusqu’à trois chantiers publiés. Le portfolio complet est accessible sur `/realisations`, avec filtres par métier et galerie détaillée dans une fenêtre.
+
+L’espace `/admin/realisations` permet de créer, modifier, masquer ou supprimer un chantier. Champs : titre, description, métier, commune facultative, date, publication, mise en avant et ordre. Jusqu’à 20 photos, ajout multiple (JPG, PNG ou WebP, 5 Mo par photo), légendes, réorganisation et repères « Avant » / « Après ». La première photo sert de couverture. Un brouillon peut être enregistré sans photo ; la publication nécessite au moins une photo.
+
+La migration `202609140002_realisations` crée uniquement la table `Realisation` et son index. Appliquer `npm run db:migrate` avant le déploiement de cette fonctionnalité. Une galerie vide reste présentable et n’affiche aucun chantier fictif.
+
 ## Mise à jour de la base
 
 La compilation ne modifie plus automatiquement la base. Appliquer les migrations séparément avant de mettre en ligne la nouvelle version.

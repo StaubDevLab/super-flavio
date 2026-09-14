@@ -25,6 +25,23 @@ model Service {
   prestations      String?
 }
 
+model Realisation {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  category    String
+  location    String   @default("")
+  completedAt DateTime? @db.Date
+  images      Json     @default("[]")
+  active      Boolean  @default(false)
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+
+  @@index([active, order])
+}
+
 model Account {
   id                       String  @id @default(cuid())
   userId                   String

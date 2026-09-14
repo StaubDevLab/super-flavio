@@ -15,6 +15,7 @@ export default function Footer() {
                 <nav className="flex flex-wrap items-center gap-6 text-sm" aria-label="Navigation de pied de page">
                     <Link href="/">Accueil</Link>
                     <Link href="/services">Les services</Link>
+                    <Link href="/realisations">Réalisations</Link>
                     <Link href="/contact" className="flex items-center gap-2">Votre projet <ArrowUpRight size={16} />
                     </Link>
                 </nav>

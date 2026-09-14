@@ -16,7 +16,7 @@ export default function ResponsiveMenu() {
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <HeaderLogo />
             <nav className="flex flex-col gap-5">
-                {[["/", "Accueil"], ["/services", "Les services"], ["/contact", "Parlons de votre projet"], ...(session ? [["/admin/services", "Gérer les services"]] : [])].map(([href, label]) =>
+                {[["/", "Accueil"], ["/services", "Les services"], ["/realisations", "Réalisations"], ["/contact", "Parlons de votre projet"], ...(session ? [["/admin/services", "Gérer les services"], ["/admin/realisations", "Gérer les réalisations"]] : [])].map(([href, label]) =>
                     <SheetClose asChild key={href}>
                         <Link href={href}>
                             {label}

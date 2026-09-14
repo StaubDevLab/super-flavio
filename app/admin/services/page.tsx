@@ -29,7 +29,8 @@ export default function AdminPage() {
         <main className="site-container flex-grow py-12">
             <div className="flex flex-col sm:flex-row justify-between gap-5 sm:items-end">
                 <div>
-                    <p className="eyebrow">VOTRE ESPACE ARTISAN</p>
+                    <Link href="/admin" className="text-sm text-muted-foreground">← Votre espace artisan</Link>
+                    <p className="eyebrow mt-5">VOTRE ESPACE ARTISAN</p>
                     <h1 className="section-title">Gérer vos services</h1>
                     <p className="text-muted-foreground text-sm mt-3">Vos métiers, vos prestations, votre vitrine. Tout se gère ici.</p>
                 </div>
