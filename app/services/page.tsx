@@ -1,14 +1,12 @@
 import ServicesGroup from "@/components/services/services-group";
 import Header from "@/components/header/Header";
-import {Separator} from "@/components/ui/separator";
-import PageContainer from "@/components/ui/page-container";
-
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Les services | Super Flavio", description: "Découvrez les prestations de votre artisan multi-services en Corrèze." };
 export default function ServicesPage() {
-    return (
-        <PageContainer>
-            <Header/>
-            {/*<Separator className={"border-primary border w-3/4 mx-auto"}/>*/}
-            <ServicesGroup params={""}/>
-        </PageContainer>
-    )
+    return <>
+        <Header />
+        <main>
+            <ServicesGroup params="" full />
+        </main>
+    </>;
 }

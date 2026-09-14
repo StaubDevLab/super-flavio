@@ -1,24 +1,15 @@
-import React, {useMemo} from 'react';
-import PropTypes from 'prop-types';
-import {ContactForm} from "@/components/contact/contact-form";
-
-import {Card} from "@/components/ui/card";
-
-import ContactInfos from "@/components/contact/contact-infos";
-import {Separator} from "@/components/ui/separator";
-type Props = {
-    params:{
-    }
+import { ContactForm } from "./contact-form";
+import ContactInfos from "./contact-infos";
+export default function ContactComponent({ params }: {
+    params: {};
+}) {
+    return <section id="contact" className="site-container w-full py-16 lg:py-20">
+        <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-20 rounded-3xl border border-black/5 bg-white p-6 sm:p-10 lg:p-14">
+            <ContactInfos params="" />
+            <div>
+                <h3 className="text-xl font-semibold mb-6">Racontez-moi votre projet</h3>
+                <ContactForm />
+            </div>
+        </div>
+    </section>;
 }
-export default function ContactComponent  ({params} : Props)  {
-
-    return (
-        <section className="p-6 w-full h-full">
-            <Card className={"flex flex-col lg:flex-row  gap-6 w-full p-10 shadow-lg  "}>
-                <ContactInfos params={""}/>
-                <ContactForm/>
-
-            </Card>
-        </section>
-    );
-};

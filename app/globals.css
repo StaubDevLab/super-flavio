@@ -4,8 +4,8 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 60 20% 97%;
+    --foreground: 140 15% 15%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -32,7 +32,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
  
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
  
   .dark {
@@ -73,30 +73,26 @@
   body {
     @apply bg-background text-foreground;
   }
-  .quill-content {
-    h1{
-      @apply text-3xl;
-    }
-    h2{
-      @apply text-2xl;
-    }
-    h3{
-      @apply text-xl;
-    }
-    h4{
-      @apply text-lg;
-    }
-    ol{
-      @apply list-decimal;
-    }
-    ul{
-      @apply list-disc;
-    }
-    a{
-      @apply text-primary underline;
-
-    }
-
-  }
-
+  .quill-content h1 { @apply text-3xl; }
+  .quill-content h2 { @apply text-2xl; }
+  .quill-content h3 { @apply text-xl; }
+  .quill-content h4 { @apply text-lg; }
+  .quill-content ol { @apply list-decimal; }
+  .quill-content ul { @apply list-disc; }
+  .quill-content a { @apply text-primary underline; }
 }
+
+@layer components {
+  .site-container { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12; }
+  .eyebrow { @apply flex items-center gap-2 text-[11px] font-semibold tracking-[.17em] text-primary; }
+  .section-title { @apply mt-4 text-3xl sm:text-4xl lg:text-[44px] font-semibold leading-[1.15] tracking-[-.04em]; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-3 rounded-lg bg-primary px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#3c784b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary; }
+  .btn-outline { @apply inline-flex items-center justify-center gap-3 rounded-lg border border-black/15 px-5 py-3.5 text-sm font-medium transition-colors hover:bg-white; }
+}
+html { scroll-behavior: smooth; }
+body { font-weight: 400; }
+.quill-content { line-height: 1.8; overflow-wrap: anywhere; }
+.quill-content p { margin-bottom: 1em; }
+.quill-content ul, .quill-content ol { padding-left: 1.5em; }
+.quill-content h1, .quill-content h2, .quill-content h3 { margin-top: 1em; margin-bottom: .5em; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

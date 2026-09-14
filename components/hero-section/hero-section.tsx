@@ -1,64 +1,49 @@
-'use client'
-import React, {useEffect, useState} from 'react';
-
 import Header from "@/components/header/Header";
-
-
-type Props = {
-    params:{
-    }
-}
-export default function HeroSection  ()  {
-    const [scrollY, setScrollY] = useState(0);
-
-    const handleScroll = () => {
-        setScrollY(window.scrollY);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-    const calculateBackgroundStyles = () => {
-        // Adjust the factor for the desired zoom effect
-        const backgroundSize = 100 + scrollY * 0.1;
-        const backgroundPosition = `50% ${scrollY * 0.1}px`;
-        return {
-            backgroundImage: 'url(/assets/hero-image.jpg)',
-            backgroundSize: `${backgroundSize}% auto`,
-            backgroundPosition: backgroundPosition,
-            backgroundRepeat: 'no-repeat',
-        };
-    };
-    return (
-        <header className="w-full">
-
-            <div className="w-full bg-center bg-cover "
-                 style={{backgroundImage: 'url(/assets/hero-image.jpg)'}}
-                 >
-
-
-                <div className="flex flex-col items-center justify-center w-full h-full bg-gray-900 bg-opacity-50 pb-12">
-                    <Header/>
-                    <div className="text-center">
-                        <div className="container px-4 mx-auto">
-
-                            <div className="max-w-4xl mx-auto text-center">
-
-                                <h2 className="mt-8 mb-6 text-4xl lg:text-5xl font-bold text-gray-100">Votre expert plombier sur la <span className={"text-primary"}>Corrèze <span className={"text-3xl animate-pulse"}>|</span></span> <span >🪠👨🏼‍🔧</span></h2>
-                                <p className="max-w-3xl mx-auto mb-10 text-lg text-gray-300">
-                                    Solution tout-en-un pour tous vos projets de plomberie et vos travaux de rénovation.
-                                </p>
-                                <a className="inline-block w-auto md:w-auto mb-4 md:mr-6 py-3 px-4 text-sm font-bold uppercase border-2 border-transparent bg-primary rounded-lg transition-transform duration-500 ease-in-out hover:scale-110 text-white "
-                                   href="/contact">Me contacter</a>
-                            </div>
-                        </div>
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, MapPin, Wrench, ArrowDown, Check } from "lucide-react";
+export default function HeroSection() {
+    return <section className="w-full">
+        <Header />
+        <div className="site-container grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 py-14 lg:py-20 items-center">
+            <div>
+                <p className="eyebrow">
+                    <span className="h-2 w-2 rounded-full bg-primary" /> UN ARTISAN, PLUSIEURS SAVOIR-FAIRE</p>
+                <h1 className="mt-6 text-[42px] sm:text-6xl lg:text-[48px] xl:text-[60px] leading-[1.08] font-semibold tracking-[-.055em]">Vos petits travaux.<br />Vos grands projets.<br />
+                    <span className="text-primary">Le même artisan.</span>
+                </h1>
+                <p className="mt-7 max-w-lg text-base sm:text-lg text-muted-foreground leading-relaxed">Plomberie, électricité, peinture, placo, charpenterie, climatisation et carrelage : un seul interlocuteur pour vos travaux en Corrèze.</p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                    <Link className="btn-primary" href="/contact">Parlons de votre projet <ArrowUpRight size={18} />
+                    </Link>
+                    <Link className="btn-outline" href="#services">Découvrir les services <ArrowDown size={16} />
+                    </Link>
+                </div>
+                <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-2">
+                        <Check size={15} className="text-primary" /> Un interlocuteur unique</span>
+                    <span className="flex items-center gap-2">
+                        <MapPin size={15} className="text-primary" /> Tulle, Brive et alentours</span>
+                </div>
+            </div>
+            <div className="relative pb-7 pl-4 lg:pl-0">
+                <div className="absolute -right-3 top-5 bottom-0 left-10 rounded-[160px_28px_28px_28px] bg-[#e5eddf]" />
+                <div className="relative aspect-[.98] sm:aspect-[1.2] lg:aspect-[.98] overflow-hidden rounded-[150px_24px_24px_24px]">
+                    <Image src="/assets/hero-image.jpg" alt="Un artisan intervient sur une installation de plomberie" fill priority sizes="(max-width: 1024px) 90vw, 45vw" className="object-cover object-[60%_center]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#173324]/45 to-transparent" />
+                    <p className="absolute bottom-6 left-7 text-white text-sm flex items-center gap-2">
+                        <MapPin size={16} /> Le savoir-faire, près de chez vous.</p>
+                </div>
+                <div className="absolute -left-1 sm:-left-5 bottom-14 flex items-center gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-xl shadow-black/5">
+                    <span className="rounded-xl bg-[#eef4e9] p-3 text-primary">
+                        <Wrench size={25} />
+                    </span>
+                    <div>
+                        <p className="font-semibold text-sm">Le goût du travail bien fait</p>
+                        <p className="text-xs text-muted-foreground mt-1">Du dépannage à la rénovation</p>
                     </div>
                 </div>
             </div>
-        </header>
-
-    );
-};
+        </div>
+    </section>;
+}

@@ -1,35 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import { ArrowUpRight } from "lucide-react";
 export default function Footer() {
-
-    return (
-        <footer className="flex flex-col p-10 bg-primary text-white justify-center items-center mt-auto gap-3">
-            <nav className="flex flex-col md:flex-row gap-4 text-center">
-                <Link href={"/"} className="link link-hover">Accueil</Link>
-                <Link href={"/services"} className="link link-hover">Services</Link>
-                <Link href={"/contact"} className="link link-hover">Contact</Link>
-
-            </nav>
-            <nav>
-                <div className="grid grid-flow-col gap-4">
-
-                    <Link href={"#"}>
-                        <Image src={"/assets/instagram-icon.png"} alt={"Logo d'instagram"} width={24} height={24} />
-                    </Link>
-                    <Link href={"#"} >
-                        <Image src={"/assets/facebook-icon.png"} alt={"Logo de facebook"} width={24} height={24} />
-
-                    </Link>
+    return <footer className="mt-auto bg-[#203b2b] text-white">
+        <div className="site-container py-12">
+            <div className="flex flex-col md:flex-row justify-between gap-8">
+                <div className="flex items-center gap-4">
+                    <Image src="/assets/logo.png" width={60} height={60} alt="Super Flavio" className="rounded-full" />
+                    <div>
+                        <p className="text-xl font-semibold">Super Flavio.</p>
+                        <p className="text-sm mt-2 text-white/60">Un artisan de proximité. Plusieurs savoir-faire.</p>
+                    </div>
                 </div>
-            </nav>
-            <aside className={"text-center flex flex-col gap-3"}>
-                <div className={'flex flex-col items-center'}>
-                   <p >Copyright © 2024 - All right reserved by </p>
-                    <Image className={"p-0"} src={"/assets/staubdev.png"} width={100} height={100} alt={"Logo du développeur StaubDév"}/></div>
-                <p>Icons by <Link href={"https://icons8.com"} className={"underline"}>Icons8</Link></p>
-
-            </aside>
-        </footer>
-    )
+                <nav className="flex flex-wrap items-center gap-6 text-sm" aria-label="Navigation de pied de page">
+                    <Link href="/">Accueil</Link>
+                    <Link href="/services">Les services</Link>
+                    <Link href="/contact" className="flex items-center gap-2">Votre projet <ArrowUpRight size={16} />
+                    </Link>
+                </nav>
+            </div>
+            <div className="mt-10 border-t border-white/15 pt-6 flex flex-wrap justify-between gap-3 text-xs text-white/50">
+                <p>© {new Date().getFullYear()} Super Flavio · Artisan multi-services en Corrèze</p>
+                <p>Site réalisé par StaubDév</p>
+            </div>
+        </div>
+    </footer>;
 }

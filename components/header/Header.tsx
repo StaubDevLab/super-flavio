@@ -1,37 +1,21 @@
-'use client'
-import React from 'react';
-
-import HeaderNavigation from "@/components/header/HeaderNavigation";
-import HeaderLogo from "@/components/header/HeaderLogo";
-import ResponsiveMenu from "@/components/header/ResponsiveMenu";
-import HeaderButton from "@/components/header/HeaderButton";
-import HeaderAvatar from "@/components/header/HeaderAvatar";
-import {usePathname} from "next/navigation";
-
-const Header = () => {
-    const pathname = usePathname();
-
-    return (
-        <header className={'p-4 w-full '}>
-
-                <div className={`flex items-center justify-between ${pathname === "/" && "text-white"}`}>
-                    <HeaderLogo/>
-
-                    <HeaderNavigation/>
-
-                    <div className={"flex gap-4 "}>
-                        <HeaderButton content={"Prendre rdv"}/>
-                        <ResponsiveMenu/>
-                        <HeaderAvatar/>
-                    </div>
-
-
-                </div>
-
-
-
-        </header>
-    );
-};
-
-export default Header;
+'use client';
+import HeaderLogo from "./HeaderLogo";
+import HeaderNavigation from "./HeaderNavigation";
+import ResponsiveMenu from "./ResponsiveMenu";
+import HeaderAvatar from "./HeaderAvatar";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+export default function Header() {
+    return <header className="w-full border-b border-black/5 bg-background">
+        <div className="site-container flex min-h-[96px] items-center justify-between gap-4">
+            <HeaderLogo />
+            <HeaderNavigation />
+            <div className="flex items-center gap-3">
+                <Link href="/contact" className="hidden sm:inline-flex btn-primary">Parlons de votre projet <ArrowUpRight size={17} />
+                </Link>
+                <HeaderAvatar />
+                <ResponsiveMenu />
+            </div>
+        </div>
+    </header>;
+}
