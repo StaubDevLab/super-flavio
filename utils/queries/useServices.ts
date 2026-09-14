@@ -1,20 +1,14 @@
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import type {Service} from "@prisma/client";
-
+import type { Service } from "@prisma/client";
 const getServices = async () => {
-    const {data} = await axios.get(`/api/services`, {
-
-    })
-    return data.sort((a: Service, b: Service) => a.order - b.order)
-
-}
+    const { data } = await axios.get<Service[]>(`/api/services`, {});
+    return data.sort((a: Service, b: Service) => a.order - b.order);
+};
 export const useServices = () => {
     return useQuery({
         queryKey: ['services'],
         queryFn: () => getServices(),
         enabled: true
-
-    })
-}
-
+    });
+};

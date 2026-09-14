@@ -1,26 +1,19 @@
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import type {Service} from "@prisma/client";
-import {notFound} from "next/navigation";
-
+import type { Service } from "@prisma/client";
+import { notFound } from "next/navigation";
 const getServiceBySlug = async (slug: string) => {
-
-    const {data, status} = await axios.get(`/api/services/slug/${slug}`)
+    const { data, status } = await axios.get<Service>(`/api/services/slug/${encodeURIComponent(slug)}`);
     if (status !== 200) {
-        throw new Error("Failed to fetch service")
+        throw new Error("Failed to fetch service");
     }
-    return data
-
-
-}
+    return data;
+};
 export const useServiceBySlug = (slug: string) => {
     return useQuery({
         queryKey: ['service', slug],
         queryFn: () => getServiceBySlug(slug),
         enabled: !!slug,
         retry: false,
-
-
-    })
-}
-
+    });
+};

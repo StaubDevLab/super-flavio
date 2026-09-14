@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Super Flavio
 
-## Getting Started
+Site Next.js 14 pour un artisan multi-services en Corrèze. La couleur principale du logo est conservée (`--primary: 135 32% 47%`).
 
-First, run the development server:
+## Développement
 
-```bash
+```sh
+npm install
+npx prisma generate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Les paramètres existants de connexion, de stockage Supabase et d’envoi des messages restent dans `.env`. `ALLOWED_EMAILS` (ou, pour compatibilité, `NEXT_PUBLIC_ALLOWED_EMAILS`) contient les adresses autorisées à gérer les services, séparées par des virgules.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Gestion des services
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Accès : `/admin/services`, après connexion avec une adresse autorisée.
 
-## Learn More
+- Recherche par nom ou métier, filtres par catégorie et publication, tri par titre ou ordre.
+- Métiers proposés : plomberie, électricité, peinture, placo, charpenterie, climatisation, carrelage. Une catégorie personnalisée peut être saisie.
+- Résumé pour la carte, description détaillée, prestations (une par ligne), tarif indicatif facultatif.
+- Publication ou brouillon, mise en avant sur l’accueil, ordre d’affichage.
+- Photo facultative (JPG, PNG ou WebP, 5 Mo maximum), texte alternatif, aperçu de la carte.
 
-To learn more about Next.js, take a look at the following resources:
+L’accueil présente jusqu’à six services publiés, avec les services mis en avant en premier, puis l’ordre d’affichage. La page des services présente tout le catalogue publié. Les URL des services existants restent inchangées après modification du titre.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Mise à jour de la base
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+La compilation ne modifie plus automatiquement la base. Appliquer les migrations séparément avant de mettre en ligne la nouvelle version.
 
-## Deploy on Vercel
+Pour une **base existante créée avec `prisma db push`**, vérifier qu’elle correspond au schéma initial et en conserver une sauvegarde. Enregistrer une seule fois le schéma initial comme déjà appliqué :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sh
+npx prisma migrate resolve --applied 202609140000_initial
+npm run db:migrate
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Pour une base neuve, ou si le schéma initial a déjà été enregistré dans l’historique :
+
+```sh
+npm run db:migrate
+```
+
+La migration des services ajoute `category`, `featured`, `priceLabel` et `prestations`. Elle conserve les données existantes. Les anciens services sont classés dans « Plomberie » par défaut ; leur métier peut ensuite être ajusté dans l’administration. Aucun nouveau service n’est inséré automatiquement.
+
+## Vérifications et compilation
+
+```sh
+npm test
+npx tsc --noEmit
+npm run lint
+npm run build
+```
+
+La connexion Google, le chargement des photos et l’envoi de messages nécessitent les services externes configurés. Les pages publiques n’exposent que les services publiés ; l’écriture est limitée aux adresses autorisées.

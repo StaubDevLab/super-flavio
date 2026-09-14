@@ -19,6 +19,10 @@ model Service {
   order            Int      @default(0)
   image            String?
   imageAlternatif  String?
+  category         String   @default("Plomberie")
+  featured         Boolean  @default(false)
+  priceLabel       String?
+  prestations      String?
 }
 
 model Account {
