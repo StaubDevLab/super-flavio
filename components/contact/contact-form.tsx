@@ -32,21 +32,20 @@ export function ContactForm() {
     const lengthTextarea = form.watch("message").length;
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const response = await axios.post('/api/send', values);
+            await axios.post('/api/send', values);
             toast({
-                className: "bg-green-700 text-white z-20",
-                description: (<h2>
-                    <BadgeCheck className={'inline mr-1'} /> Message bien envoyé !
-                </h2>),
+                duration: 7000,
+                title: <span className="flex items-center gap-3 text-base tracking-tight"><span className="rounded-xl bg-[#e8eee3] p-2"><BadgeCheck size={22} aria-hidden="true" /></span>Votre demande est envoyée</span>,
+                description: "Merci pour votre message ! Flavien reviendra vers vous pour parler de votre projet.",
             });
             return form.reset();
         }
-        catch (e: any) {
+        catch {
             toast({
                 variant: 'destructive',
-                description: (<h2>
-                    <BadgeX className={'inline mr-1'} /> Une erreur est survenue !
-                </h2>),
+                duration: 9000,
+                title: <span className="flex items-center gap-3 text-base tracking-tight"><span className="rounded-xl bg-[#f8e8df] p-2"><BadgeX size={22} aria-hidden="true" /></span>L’envoi n’a pas abouti</span>,
+                description: "Réessayez dans un instant ou contactez Flavien par téléphone. Votre message est conservé dans le formulaire.",
             });
         }
     }

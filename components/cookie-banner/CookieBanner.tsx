@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Cookie } from "lucide-react";
 import { getLocalStorage, setLocalStorage } from "@/lib/storage-helper";
 
 export default function CookieBanner() {
@@ -32,26 +33,37 @@ export default function CookieBanner() {
     }
 
     return (
-        <div className="fixed bottom-5 left-5 z-50 bg-white border border-gray-200 shadow-xl rounded-2xl p-5 max-w-sm w-[calc(100%-2.5rem)] transition-opacity duration-300">
-            <div className="flex flex-col items-center text-center">
-                <p className="text-sm text-gray-700 mb-4">
-                    Ce site utilise des cookies pour mesurer son audience. Vous pouvez les accepter ou les refuser.
-                </p>
-                <div className="flex space-x-4">
-                    <button
-                        className="px-4 py-2 bg-gray-200 text-gray-800 font-medium rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                        onClick={() => setCookieConsent(false)}
-                    >
-                        Refuser
-                    </button>
-                    <button
-                        className="px-4 py-2 bg-primary text-white font-medium rounded-lg hover:bg-[#3c784b] focus:outline-none focus:ring-2 focus:ring-primary"
-                        onClick={() => setCookieConsent(true)}
-                    >
-                        Accepter
-                    </button>
-                </div>
+        <section
+            aria-labelledby="cookie-banner-title"
+            aria-describedby="cookie-banner-description"
+            className="fixed bottom-4 left-4 right-4 z-50 max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-3xl border border-[#234b32]/10 bg-[#fafbf7] p-6 shadow-xl shadow-[#234b32]/10 sm:bottom-6 sm:left-6 sm:right-auto sm:w-[400px]"
+        >
+            <div className="mb-5 flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#e8eee3] text-[#234b32]">
+                    <Cookie size={22} strokeWidth={1.6} aria-hidden="true" />
+                </span>
+                <p className="text-[10px] font-semibold tracking-[.17em] text-[#55704e]">VOTRE CONFORT DE NAVIGATION</p>
             </div>
-        </div>
+            <h2 id="cookie-banner-title" className="text-xl font-semibold tracking-tight text-[#234b32]">Une petite place pour les cookies ?</h2>
+            <p id="cookie-banner-description" className="mt-3 text-sm leading-relaxed text-[#5e6a60]">
+                Les cookies de mesure d’audience m’aident à comprendre les visites et à améliorer le site. Vous pouvez les accepter ou les refuser : le site reste accessible dans les deux cas.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+                <button
+                    type="button"
+                    className="rounded-xl border border-[#234b32]/20 px-4 py-3 text-sm font-semibold text-[#234b32] transition-colors hover:bg-[#e8eee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#234b32]"
+                    onClick={() => setCookieConsent(false)}
+                >
+                    Refuser
+                </button>
+                <button
+                    type="button"
+                    className="rounded-xl bg-[#234b32] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#315f40] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#234b32]"
+                    onClick={() => setCookieConsent(true)}
+                >
+                    Accepter
+                </button>
+            </div>
+        </section>
     );
 }
