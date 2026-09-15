@@ -30,7 +30,7 @@ La section de l’accueil présente jusqu’à trois chantiers publiés. Le port
 
 L’espace `/admin/realisations` permet de créer, modifier, masquer ou supprimer un chantier. Champs : titre, description, métier, commune facultative, date, publication, mise en avant et ordre. Jusqu’à 20 photos, ajout multiple (JPG, PNG ou WebP, 5 Mo par photo), légendes, réorganisation et repères « Avant » / « Après ». La première photo sert de couverture. Un brouillon peut être enregistré sans photo ; la publication nécessite au moins une photo.
 
-La migration `202609140002_realisations` crée uniquement la table `Realisation` et son index. Appliquer `npm run db:migrate` avant le déploiement de cette fonctionnalité. Une galerie vide reste présentable et n’affiche aucun chantier fictif.
+La migration `202609140002_realisations` crée uniquement la table `Realisation` et son index. Appliquer `npm run db:migrate` avant le déploiement de cette fonctionnalité. La section est masquée lorsqu’aucune réalisation n’est publiée.
 
 ## Mise à jour de la base
 
@@ -61,3 +61,19 @@ npm run build
 ```
 
 La connexion Google, le chargement des photos et l’envoi de messages nécessitent les services externes configurés. Les pages publiques n’exposent que les services publiés ; l’écriture est limitée aux adresses autorisées.
+
+## Envoi du formulaire de contact (Resend)
+
+`/api/send` utilise Resend pour transmettre la demande à l’artisan, puis un accusé de réception au client. Le client est placé en « Répondre à » sur la notification.
+
+Variables serveur à configurer dans `.env` et chez l’hébergeur :
+
+```dotenv
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=contact@superflavioplomberie.fr
+CONTACT_EMAIL=flavien.staub@gmail.com
+```
+
+Le domaine de l’expéditeur doit être vérifié dans Resend : https://resend.com/docs/send-with-nextjs. `CONTACT_EMAIL` conserve par défaut la valeur existante de `NEXT_PUBLIC_EMAIL`. La clé ne doit jamais porter le préfixe `NEXT_PUBLIC_`. SendGrid et sa clé ne sont plus utilisés.
+
+Un refus ou une panne lors de l’envoi à l’artisan renvoie une erreur au formulaire. Si seul l’accusé échoue, la demande reste considérée comme envoyée pour éviter un doublon. Les tests simulent Resend et n’envoient aucun email réel.
