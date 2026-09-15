@@ -77,3 +77,15 @@ CONTACT_EMAIL=flavien.staub@gmail.com
 Le domaine de l’expéditeur doit être vérifié dans Resend : https://resend.com/docs/send-with-nextjs. `CONTACT_EMAIL` conserve par défaut la valeur existante de `NEXT_PUBLIC_EMAIL`. La clé ne doit jamais porter le préfixe `NEXT_PUBLIC_`. SendGrid et sa clé ne sont plus utilisés.
 
 Un refus ou une panne lors de l’envoi à l’artisan renvoie une erreur au formulaire. Si seul l’accusé échoue, la demande reste considérée comme envoyée pour éviter un doublon. Les tests simulent Resend et n’envoient aucun email réel.
+
+## Référencement naturel
+
+- Définir `SITE_URL` sur l’URL HTTPS canonique de production (sans chemin). À défaut, `NEXT_PUBLIC_URL_DOMAIN` est utilisé, puis `https://superflavioplomberie.fr`. La configuration locale actuelle utilise un domaine Vercel : vérifier cette valeur avant publication.
+- Chaque page publique dispose d’un titre, d’une description, d’une URL canonique et de métadonnées Open Graph / Twitter. Les paramètres du formulaire de contact ne créent pas de nouvelle URL canonique.
+- Les services et réalisations publiés sont rendus côté serveur. Les services absents ou inactifs renvoient une 404 ; les erreurs de base ne sont pas converties en fausses pages introuvables. La base doit être accessible au serveur en production.
+- `/sitemap.xml` suit automatiquement les services actifs ; `/robots.txt` indique son adresse. Les routes d’administration et API disposent aussi d’un en-tête `X-Robots-Tag: noindex, nofollow`.
+- Les données structurées décrivent l’entreprise, les prestations et le fil d’Ariane. Aucune adresse postale, note client ou horaire non confirmé n’est inventé : le balisage utilise `Organization`, sans prétendre à l’éligibilité aux résultats enrichis LocalBusiness.
+- Après déploiement, soumettre le sitemap dans Google Search Console et contrôler l’accueil ainsi qu’un service avec l’inspection d’URL. Vérifier les données structurées avec le Rich Results Test. Pour le référencement local, compléter la fiche Google Business Profile avec les coordonnées et zones d’intervention réelles.
+- Rédiger des descriptions spécifiques pour chaque prestation et documenter les chantiers avec leurs localités et des légendes de photos pertinentes. Les optimisations techniques ne garantissent pas une position dans Google.
+
+Références : [guide Google pour développeurs](https://developers.google.com/search/docs/fundamentals/get-started-developers), [données Organization](https://developers.google.com/search/docs/appearance/structured-data/organization).

@@ -7,16 +7,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useRealisations } from "@/utils/queries/useRealisations";
 import { completionDateLabel, type RealisationItem } from "@/lib/realisations";
 import { Button } from "@/components/ui/button";
-export default function RealisationsGroup({ full = false }: {
+export default function RealisationsGroup({ full = false, initialData }: {
     full?: boolean;
+    initialData?: RealisationItem[];
 }) {
-    const { data: projects = [], isPending, isError, refetch } = useRealisations();
+    const { data: projects = [], isPending, isError, refetch } = useRealisations(false, true, initialData);
     const [category, setCategory] = useState("Tous");
     const [selected, setSelected] = useState<RealisationItem | null>(null);
     const categories = ["Tous", ...Array.from(new Set(projects.map(project => project.category)))];
     const filtered = projects.filter(project => category === "Tous" || project.category === category);
     const displayed = full ? filtered : filtered.slice(0, 3);
-    if (!isPending && !isError && projects.length === 0) return null;
+    if (!full && !isPending && !isError && projects.length === 0) return null;
     if (!full && (isPending || isError)) return null;
     return <section id="realisations" className="w-full border-y border-black/5 bg-[#edf2e9]">
         <div className="site-container py-16 lg:py-24">

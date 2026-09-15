@@ -5,11 +5,12 @@ import { useServices } from "@/utils/queries/useServices";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-export default function ServicesGroup({ params, full = false }: {
+export default function ServicesGroup({ params, full = false, initialData }: {
     params: {};
     full?: boolean;
+    initialData?: import("@prisma/client").Service[];
 }) {
-    const { data: services, isPending, isError, refetch } = useServices();
+    const { data: services, isPending, isError, refetch } = useServices(initialData);
     const [category, setCategory] = useState("Tous");
     const visible = (services || []).filter(service => service.active);
     const categories = ["Tous", ...Array.from(new Set(visible.map(service => service.category || "Plomberie")))];

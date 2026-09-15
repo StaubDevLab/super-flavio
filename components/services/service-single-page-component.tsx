@@ -1,23 +1,8 @@
-'use client';
 import Image from "next/image";
 import Link from "next/link";
-import { useServiceBySlug } from "@/utils/queries/useServiceBySlug";
+import type { Service } from "@prisma/client";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
-export default function ServiceSinglePageComponent({ slug }: {
-    slug: string;
-}) {
-    const { data: service, isPending, isError, refetch } = useServiceBySlug(slug);
-    if (isPending)
-        return <div className="site-container py-16">
-            <div className="h-80 rounded-2xl animate-pulse bg-muted" role="status" aria-label="Chargement du service" />
-        </div>;
-    if (isError || !service)
-        return <div className="site-container py-16 text-center">
-            <h1 className="text-2xl font-semibold">Service indisponible</h1>
-            <p className="mt-4 text-muted-foreground">Cette prestation n’est pas disponible pour le moment.</p>
-            <Link href="/services" className="btn-outline mt-6">Retour aux services</Link>
-            <button className="btn-outline ml-3" onClick={() => refetch()}>Réessayer</button>
-        </div>;
+export default function ServiceSinglePageComponent({ service }: { service: Service }) {
     const prestations = (service.prestations || "").split('\n').map(item => item.trim()).filter(Boolean);
     return <main className="site-container py-12 lg:py-20">
         <Link href="/services" className="inline-flex gap-2 items-center text-sm text-muted-foreground mb-8">
