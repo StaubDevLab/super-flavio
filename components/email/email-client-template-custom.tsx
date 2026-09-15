@@ -1,89 +1,22 @@
-import {Body, Container, Head, Heading, Html, Img, Preview, Row, Section, Text,} from "@react-email/components";
-import {Tailwind} from "@react-email/tailwind";
 import * as React from "react";
+import { Button, Heading, Link, Section, Text } from "@react-email/components";
+import { EmailLayout, emailSiteUrl, emailStyles as styles } from "./email-layout";
 
-interface EmailToClientTemplateProps {
-    name: string
+export function EmailToClientTemplateCustom({ name }: { name: string }) {
+    const phone = process.env.NEXT_PUBLIC_PHONE;
+    return <EmailLayout preview="Votre demande est bien reçue. Flavien reviendra vers vous pour parler de votre projet." label="DEMANDE BIEN REÇUE">
+        <Heading as="h1" style={styles.heading}>Votre projet commence ici.</Heading>
+        <Text style={styles.text}>Bonjour {name},</Text>
+        <Text style={styles.text}>Merci de m’avoir contacté et de m’avoir parlé de votre projet. Votre message m’a bien été transmis.</Text>
+        <Section style={styles.panel}>
+            <Text style={styles.label}>ET MAINTENANT ?</Text>
+            <Text style={{ ...styles.text, margin: "8px 0 0" }}>Je vais prendre connaissance de votre demande et revenir vers vous pour préciser vos besoins et échanger sur la suite.</Text>
+        </Section>
+        <Text style={styles.text}>Un détail à ajouter ou une photo à partager ? Répondez simplement à cet e-mail.</Text>
+        {phone && <Text style={styles.text}>Pour une demande urgente, vous pouvez aussi m’appeler au <Link href={`tel:${phone.replace(/\s/g, "")}`} style={styles.link}>{phone}</Link>.</Text>}
+        <Section style={{ margin: "28px 0" }}>
+            <Button href={`${emailSiteUrl}/services`} style={styles.button}>Découvrir mes services</Button>
+        </Section>
+        <Text style={{ ...styles.text, marginBottom: "0" }}>À bientôt,<br /><strong style={{ color: "#234b32" }}>Flavien</strong><br />Votre artisan Super Flavio</Text>
+    </EmailLayout>;
 }
-
-const baseUrl = process.env.NEXT_PUBLIC_URL_DOMAIN
-    ? `https://${process.env.NEXT_PUBLIC_URL_DOMAIN}`
-    : "";
-
-
-export const EmailToClientTemplateCustom = ({
-                                        name
-                                    }: EmailToClientTemplateProps) => {
-    return (
-        <Html>
-            <Head/>
-            <Preview>SuperFlavio - Plomberie</Preview>
-            <Tailwind
-                config={{
-                    theme: {
-                        extend: {
-                            colors: {
-                                brand: "#519e65",
-                                offwhite: "#fafbfb",
-                            },
-                            spacing: {
-                                0: "0px",
-                                20: "20px",
-                                45: "45px",
-                            },
-                        },
-                    },
-                }}
-            >
-                <Body className="bg-offwhite text-base font-sans">
-                    <Img
-
-                        src={`${baseUrl}/assets/logo.png`}
-                        width="184"
-                        height="184"
-                        alt="Logo SuperFlavio Plomberie"
-                        className="mx-auto my-20"
-                    />
-                    <Container className="bg-white p-45">
-                        <Heading className="text-center my-0 leading-8">
-                            Vous avez fait le bon choix !
-                        </Heading>
-
-                        <Section>
-                            <Row>
-                                <Text className="text-lg">
-                                    Bonjour, {name}
-                                </Text>
-                                <Text className="text-base">
-                                    Je vais prendre connaissance de votre demande et y apporter une réponse le plus
-                                    rapidement possible.
-                                </Text>
-
-                                <Text className="text-base">N&apos;hésitez pas à m&apos;envoyer un SMS ou m&apos;appeler
-                                    au {process.env.NEXT_PUBLIC_PHONE} si votre demande est urgente.</Text>
-                            </Row>
-                        </Section>
-
-
-                        <Section className="text-center">
-                            <a href={`${baseUrl}/services`}
-                               className="bg-brand text-white no-underline rounded-lg py-3 px-[18px]">
-                                Retrouvez mes services
-                            </a>
-                        </Section>
-
-
-                    </Container>
-
-                    <Container className="mt-20">
-
-                        <Text className="text-center text-gray-400 mb-45">
-                            SuperFlavio - Votre plombier sur la Corrèze !
-                        </Text>
-                    </Container>
-                </Body>
-            </Tailwind>
-        </Html>
-    );
-};
-
